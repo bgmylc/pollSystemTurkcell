@@ -37,7 +37,7 @@ namespace pollSystemTurkcell.Controllers
             if (user != null)
             {
                 List<Claim> claims = new List<Claim>();
-                claims.Add(new Claim(ClaimTypes.Name, user.Name));
+                claims.Add(new Claim(ClaimTypes.Name, user.UserName));                
                 claims.Add(new Claim(ClaimTypes.Role, userService.userRole(user.ID)));
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -52,6 +52,13 @@ namespace pollSystemTurkcell.Controllers
 
             ModelState.AddModelError("Hata", "Kullanıcı adı ya da şifre yanlış");
             return View();
+
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return Redirect("/");
 
         }
     }

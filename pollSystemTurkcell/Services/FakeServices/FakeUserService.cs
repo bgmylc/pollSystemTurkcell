@@ -16,6 +16,16 @@ namespace pollSystemTurkcell.Services.FakeServices
             new User{Name = "Floki",Surname="Yolcu", UserName="floskos123", Email="floki@segum.com", Password="segumfloki23", PhoneNumber="9987654321" , UserRole = new UserRole{ Name = "Admin" } }
         };
 
+        public int GetIDByUsername(string username)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User GetUserByID(int userID)
+        {
+            throw new NotImplementedException();
+        }
+
         public string userRole(int userID)
         {
             throw new NotImplementedException();

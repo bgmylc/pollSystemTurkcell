@@ -9,6 +9,8 @@ namespace pollSystemTurkcell.Services.Interfaces
     public interface IUserService
     {
         User ValidUser(string username, string password);
+        User GetUserByID(int userID);
+        int GetIDByUsername(string username);
         string userRole(int userID);
     }
 }
