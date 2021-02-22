@@ -31,8 +31,7 @@ namespace pollSystemTurkcell.Models
         [Display(Name = "Anketi Oluşturan Admin")]
         public User Creator { get; set; }
 
-        [Display(Name = "Ankette Olacak Soru Sayısı")]
-        public int NoOfQuestions { get; set; }
+        [Display(Name = "Anket Soruları")]
         public IList<Question> Questions { get; set; }
         public IList<PollUser> User { get; set; }
 

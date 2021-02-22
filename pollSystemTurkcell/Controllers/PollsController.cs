@@ -17,11 +17,13 @@ namespace pollSystemTurkcell.Controllers
     {
         private IPollService pollService;
         private IUserService userService;
+        private IQuestionService questionService;
 
-        public PollsController(IPollService pollService, IUserService userService)
+        public PollsController(IPollService pollService, IUserService userService, IQuestionService questionService)
         {
             this.pollService = pollService;
             this.userService = userService;
+            this.questionService = questionService;
         }
         public IActionResult Index()
         {
@@ -38,25 +40,79 @@ namespace pollSystemTurkcell.Controllers
             return View();
         }
 
-        //TODO 6: Poll için create, edit, delete ve details yapacağız
-        //TODO 7: Poll için soru oluşturma kısmı olmadı
         [HttpPost]
         public IActionResult Create(Poll poll)
         {
             if (ModelState.IsValid) //If there are no errors; create the poll and return to the list
             {
                 pollService.CreatePoll(poll);
-                return RedirectToAction(nameof(CreateQuestions));
+                int pollID = poll.ID;
+                return RedirectToAction("Details", "Polls", new { pollID });
             }
 
             return View(); //If there is an error open the same view again
         }
+        //TODO 6: Deadline tarihinin geçmiş olmasını önleyemedim
 
-        public IActionResult CreateQuestions(Poll poll)
+        public IActionResult Delete(int pollID)
         {
-            ViewBag.PollID = poll.ID;
-            ViewBag.NoOfQ = poll.NoOfQuestions;
-            return View();
+            var poll = pollService.GetPollByID(pollID);
+
+            if (poll == null)
+            {
+                return NotFound();
+            }
+
+            return View(poll);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Poll poll)
+        {
+
+            pollService.DeletePoll(poll);
+            return RedirectToAction(nameof(Index));
+
+        }
+
+        public IActionResult Edit(int pollID)
+        {
+            var poll = pollService.GetPollByID(pollID);
+            ViewBag.CreationDate = poll.CreationDate;
+            ViewBag.CreatorID = poll.CreatorID;
+            if (poll == null)
+            {
+                return NotFound();
+            }
+
+            return View(poll);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Poll poll)
+        {
+            if (ModelState.IsValid)
+            {
+                pollService.UpdatePoll(poll);
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(poll);
+        }
+
+        public IActionResult Details(int pollID)
+        {
+            var poll = pollService.GetPollByID(pollID);
+            IEnumerable<Question> questions = questionService.GetQuestionsByPollID(pollID);
+            //int noOfQ = questions.Count;
+           // ViewBag.NoOfQ = noOfQ;
+            ViewBag.Questions = questions;
+            if (poll == null)
+            {
+                return NotFound();
+            }
+
+            return View(poll);
         }
     }
 }

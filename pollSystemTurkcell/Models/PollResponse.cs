@@ -18,7 +18,7 @@ namespace pollSystemTurkcell.Models
         public string Notes { get; set; } //If users want to add notes to their answers, they can use this
 
         //TODO 4: En son Login sayfasını yaptım, kullanıcı oluşturma sayfası da düşünülebilir
-        //TODO 5: Database oluşturmalı mıyım bu noktada bilemedim? Ya da zıbam diye controller ve viewlara mı geçeyim?
+        //TODO 5: Normal kullanıcının poll listesi sayfasına erişmesi için layouttaki dropdownı düzelt
 
 
 

@@ -24,12 +24,32 @@ namespace pollSystemTurkcell.Services
             dbContext.SaveChanges();
         }
 
+        public void DeletePoll(Poll poll)
+        {
+            dbContext.Remove(poll);
+            dbContext.SaveChanges();
+        }
+
+        public Poll GetPollByID(int pollID)
+        {
+            return dbContext.Polls.Include(q => q.Questions)
+                                  .Include(u => u.User)
+                                  .Include(c => c.Creator)
+                                  .FirstOrDefault(i => i.ID == pollID);
+        }
+
         public List<Poll> GetPolls()
         {
             return dbContext.Polls.Include(q => q.Questions)
                                    .Include(u => u.User)
                                    .Include(c => c.Creator)
                                    .AsNoTracking().ToList();
+        }
+
+        public void UpdatePoll(Poll poll)
+        {
+            dbContext.Entry(poll).State = EntityState.Modified;
+            dbContext.SaveChanges();
         }
     }
 }
