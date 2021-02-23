@@ -13,5 +13,7 @@ namespace pollSystemTurkcell.Services.Interfaces
         Poll GetPollByID(int pollID);
         void DeletePoll(Poll poll);
         void UpdatePoll(Poll poll);
+        List<Poll> GetCurrentPolls();
+        List<Poll> GetOldPolls();
     }
 }

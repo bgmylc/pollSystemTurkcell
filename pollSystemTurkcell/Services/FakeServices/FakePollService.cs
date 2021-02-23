@@ -19,6 +19,16 @@ namespace pollSystemTurkcell.Services.FakeServices
             throw new NotImplementedException();
         }
 
+        public List<Poll> GetCurrentPolls()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Poll> GetOldPolls()
+        {
+            throw new NotImplementedException();
+        }
+
         public Poll GetPollByID(int pollID)
         {
             throw new NotImplementedException();

@@ -30,6 +30,23 @@ namespace pollSystemTurkcell.Services
             dbContext.SaveChanges();
         }
 
+        public List<Poll> GetCurrentPolls()
+        {
+            DateTime now = DateTime.Now;
+            return dbContext.Polls.Where(d => d.Deadline.CompareTo(now) > 0)
+                                  .Include(c => c.Creator)
+                                  .AsNoTracking().ToList();
+           
+        }
+
+        public List<Poll> GetOldPolls()
+        {
+            DateTime now = DateTime.Now;
+            return dbContext.Polls.Where(d => d.Deadline.CompareTo(now) < 0)
+                                  .Include(c => c.Creator)
+                                  .AsNoTracking().ToList();
+        }
+
         public Poll GetPollByID(int pollID)
         {
             return dbContext.Polls.Include(q => q.Questions)

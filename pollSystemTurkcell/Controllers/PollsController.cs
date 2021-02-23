@@ -104,8 +104,7 @@ namespace pollSystemTurkcell.Controllers
         {
             var poll = pollService.GetPollByID(pollID);
             IEnumerable<Question> questions = questionService.GetQuestionsByPollID(pollID);
-            //int noOfQ = questions.Count;
-           // ViewBag.NoOfQ = noOfQ;
+ 
             ViewBag.Questions = questions;
             if (poll == null)
             {
