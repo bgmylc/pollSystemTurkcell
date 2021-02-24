@@ -49,6 +49,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Creator.Name)
                 </td>
+                <td>
+                    <a type="button" asp-action="Details" asp-controller="PollReply" asp-route-pollID="@item.ID" class="btn btn-warning" method="post">Detaylar</a>
+                </td>
             </tr>
         }
     </tbody>

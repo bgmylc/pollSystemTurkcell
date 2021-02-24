@@ -158,4 +158,7 @@ C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcel
 C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\obj\Debug\netcoreapp3.1\Razor\Views\Questions\Edit.cshtml.g.cs
 C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\obj\Debug\netcoreapp3.1\Razor\Views\PollReply\Index.cshtml.g.cs
 C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\obj\Debug\netcoreapp3.1\Razor\Views\PollReply\OldIndex.cshtml.g.cs
+C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\obj\Debug\netcoreapp3.1\Razor\Views\PollReply\Poll.cshtml.g.cs
 C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\obj\Debug\netcoreapp3.1\Razor\Views\PollReply\Reply.cshtml.g.cs
+C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\obj\Debug\netcoreapp3.1\Razor\Views\PollReply\ResponseDetails.cshtml.g.cs
+C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\obj\Debug\netcoreapp3.1\Razor\Views\PollReply\Details.cshtml.g.cs

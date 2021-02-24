@@ -1,0 +1,74 @@
+﻿@model pollSystemTurkcell.Models.Poll
+
+@{
+    ViewData["Title"] = "Poll";
+}
+
+<h3>@ViewBag.PollName Anketi</h3>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Deadline)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Deadline)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>   
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Questions)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var item in ViewBag.Questions)
+            {
+                <p>@item.Text</p>
+
+                bool exist = false;
+
+                foreach (var response in ViewBag.Response)
+                {
+                    exist = response.QuestionID == item.ID ? true : false;
+                    if (exist)
+                    {
+                        break;
+                    }
+                }
+
+                @if (ViewBag.Message == 0 && exist)
+                {
+
+                        <div class="alert alert-warning" role="alert">
+                            <strong>Aaaa!</strong> Bu soruyu zaten yanıtlamışsın. <a asp-action="ResponseDetails" asp-route-quID="@item.ID" class="alert-link"> İstersen cevabına bakabilir </a> ya da boş sorularını cevaplayabilirsin.
+                        </div>
+                 }
+                 else
+                 {
+                        <a type="button" asp-action="Reply" asp-controller="PollReply" asp-route-qID="@item.ID" asp-route-pollID="@Model.ID" class="btn btn-info justify-content-center" method="post">Soruyu Cevapla</a>
+                 }
+                }
+
+
+</dl>
+</div>
+<div>
+    
+    <a type="button" class="btn btn-outline-success" asp-action="Index"> Listeye Dön </a>
+</div>

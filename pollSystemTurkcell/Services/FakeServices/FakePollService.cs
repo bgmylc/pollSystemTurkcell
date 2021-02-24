@@ -39,6 +39,16 @@ namespace pollSystemTurkcell.Services.FakeServices
             throw new NotImplementedException();
         }
 
+        public bool PollResponsesComplete(int userID, Poll poll)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SavePollUser(int userID, Poll poll)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdatePoll(Poll poll)
         {
             throw new NotImplementedException();

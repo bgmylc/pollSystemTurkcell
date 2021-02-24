@@ -4,40 +4,48 @@
     ViewData["Title"] = "Reply";
 }
 
-<h1>@ViewBag.PollName Anketi</h1>
+<h1>Soru</h1>
 
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Reply">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="@Model.PollID" value="@ViewBag.PollID" />
-            <input type="hidden" asp-for="@Model.RespondentID" value="@ViewBag.RespondentID" />
-            @foreach (var item in ViewBag.Questions)
-            {
-                <input type="hidden" asp-for="@Model.QuestionID" value="@item.ID" />
-                <div class="form-group form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" asp-for="Answer" /> @Html.DisplayNameFor(model => model.Answer)
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Notes" class="control-label"></label>
-                    <input asp-for="Notes" class="form-control" />
-                    <span asp-validation-for="Notes" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div>
-            }
             <div class="form-group">
-                <a type="button" asp-action="Index" asp-controller="PollReply" class="btn btn-info" method="post">Anketi Bitir</a>
+                <label><strong>Anket İsmi</strong> </label>
+                <p>
+                    <span class="badge bg-info text-dark">@ViewBag.PollName</span>
+                </p>
+            </div>
+            <div class="form-group">
+                <label><strong>Soru</strong> </label>
+                <p>
+                    @ViewBag.Question.Text
+                </p>
+            </div>
+            <div class="form-group">
+                <select class="form-control" asp-for="@Model.Answer">
+                    <option value="True"> Evet</option>
+                    <option value="False">Hayır</option>
+                </select>
+                <span asp-validation-for="@Model.Answer"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="@Model.PollID" value="@ViewBag.PollID" />
+                <input type="hidden" asp-for="@Model.RespondentID" value="@ViewBag.RespondentID" />
+                <input type="hidden" asp-for="@Model.QuestionID" value="@ViewBag.Question.ID" />
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Listeye Dön</a>
-</div>
 
+    <div>
+        <a asp-action="Index">Listeye dön</a>
+    </div>

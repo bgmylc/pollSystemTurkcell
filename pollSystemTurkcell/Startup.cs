@@ -32,6 +32,8 @@ namespace pollSystemTurkcell
             services.AddTransient<IPollService, PollService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IQuestionService, QuestionService>();
+            services.AddTransient<IPollResponseService, PollResponseService>();
+            services.AddTransient<IPollUserService, PollUserService>();
             services.AddControllersWithViews();
 
             services.AddDbContext<pollSystemTurkcellDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("db")));

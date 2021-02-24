@@ -16,8 +16,10 @@ namespace pollSystemTurkcell.Data
         
         public DbSet<Poll> Polls { get; set; }
         public DbSet<Question> Questions { get; set; }
+        public DbSet<PollResponse> PollResponses { get; set; }
         public DbSet<User> Users{ get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<PollUser> PollUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -45,6 +47,14 @@ namespace pollSystemTurkcell.Data
             modelBuilder.Entity<PollUser>().HasOne(u => u.User)
                                            .WithMany(p => p.Poll)
                                            .HasForeignKey(f => f.UserID);
+
+            modelBuilder.Entity<PollResponse>().HasOne(p => p.Poll)
+                                               .WithMany(r => r.PollResponses)
+                                               .HasForeignKey(k => k.PollID);
+
+            modelBuilder.Entity<PollResponse>().HasOne(q => q.Question)
+                                               .WithMany(r => r.PollResponses)
+                                               .HasForeignKey(f => f.QuestionID);
 
 
             base.OnModelCreating(modelBuilder);

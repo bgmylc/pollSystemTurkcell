@@ -18,16 +18,20 @@ namespace pollSystemTurkcell.Controllers
         private IPollService pollService;
         private IUserService userService;
         private IQuestionService questionService;
+        private IPollUserService pollUserService;
+        private IPollResponseService pollResponseService;
 
-        public PollsController(IPollService pollService, IUserService userService, IQuestionService questionService)
+        public PollsController(IPollService pollService, IUserService userService, IQuestionService questionService, IPollUserService pollUserService, IPollResponseService pollResponseService)
         {
             this.pollService = pollService;
             this.userService = userService;
             this.questionService = questionService;
+            this.pollUserService = pollUserService;
+            this.pollResponseService = pollResponseService;
         }
         public IActionResult Index()
         {
-            var polls = pollService.GetPolls(); //Lists all existing polls
+            var polls = pollService.GetPolls().OrderByDescending(q => q.CreationDate); //Lists all existing polls
            
             return View(polls);
         }
@@ -103,15 +107,24 @@ namespace pollSystemTurkcell.Controllers
         public IActionResult Details(int pollID)
         {
             var poll = pollService.GetPollByID(pollID);
+           
             IEnumerable<Question> questions = questionService.GetQuestionsByPollID(pollID);
- 
             ViewBag.Questions = questions;
+
+            ViewBag.NoOfAnswers = pollUserService.NoOfPeopleAnswered(pollID);
+
             if (poll == null)
             {
                 return NotFound();
             }
 
             return View(poll);
+        }
+
+        public IActionResult AnswerDetails(int pollID)
+        {
+            return View(); //TODO 1: Cevap Detaylarını gir, eğer gereken sayı geçilmişse mail atılsın, bir de word olarak indirme yapacağız
+        
         }
     }
 }

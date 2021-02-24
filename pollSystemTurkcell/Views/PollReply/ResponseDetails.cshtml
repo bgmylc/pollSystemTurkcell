@@ -1,0 +1,43 @@
+﻿@model pollSystemTurkcell.Models.PollResponse
+
+@{
+    ViewData["Title"] = "ResponseDetails";
+}
+
+<h3>Cevabınız</h3>
+
+<div>
+   
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Question.Text)
+        </dt>
+        <dd class = "col-sm-10">
+            @ViewBag.Question.Text
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Answer)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Answer == true)
+            {
+                <span class="badge bg-success">Evet</span>
+            }
+            else if (Model.Answer == false)
+            {
+                <span class="badge bg-danger">Hayır</span>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a type="button" class="btn btn-outline-primary" asp-action="Poll" asp-route-pollID="@Model.PollID"> Ankete Dön </a> |
+    <a asp-action="Index">Anketlere Dön</a>
+</div>

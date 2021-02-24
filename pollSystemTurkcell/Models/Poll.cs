@@ -34,6 +34,7 @@ namespace pollSystemTurkcell.Models
         [Display(Name = "Anket Soruları")]
         public IList<Question> Questions { get; set; }
         public IList<PollUser> User { get; set; }
+        public IList<PollResponse> PollResponses { get; set; }
 
     }
 }

@@ -14,6 +14,6 @@ namespace pollSystemTurkcell.Models
         public int PollID { get; set; }
         public Poll Poll { get; set; }
 
-
+        public IList<PollResponse> PollResponses { get; set; }
     }
 }

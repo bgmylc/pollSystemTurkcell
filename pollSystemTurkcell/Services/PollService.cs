@@ -63,6 +63,25 @@ namespace pollSystemTurkcell.Services
                                    .AsNoTracking().ToList();
         }
 
+        public bool PollResponsesComplete(int userID, Poll poll)
+        {
+            bool complete = true;
+            int check = 0;
+            foreach (var response in poll.PollResponses)
+            {
+                foreach (var question in poll.Questions)
+                {
+                    if (question.ID == response.QuestionID)
+                    {
+                        check++;
+                    }
+                }
+            }
+            complete = check == poll.Questions.Count ? true : false;
+           
+            return complete;
+        }
+
         public void UpdatePoll(Poll poll)
         {
             dbContext.Entry(poll).State = EntityState.Modified;
