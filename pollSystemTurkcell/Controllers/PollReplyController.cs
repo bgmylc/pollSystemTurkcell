@@ -97,7 +97,6 @@ namespace pollSystemTurkcell.Controllers
                     pollUser.UserID = RespondentID;
                     pollUserService.AddPollUser(pollUser);
                 }
-                
 
                 return RedirectToAction("Poll", "PollReply", new { pollResponse.PollID });
 
@@ -130,6 +129,52 @@ namespace pollSystemTurkcell.Controllers
             }
             return View(poll);
         }
-        
+
+        public IActionResult Alert(int pollID)
+        {
+            int RespondentID = userService.GetIDByUsername(User.Identity.Name);
+            var poll = pollService.GetPollByID(pollID);
+            var pollCreator = userService.GetUserByID(poll.CreatorID);
+
+            IEnumerable<Question> questions = questionService.GetQuestionsByPollID(poll.ID);
+
+            int NoOfNeededAnswers = poll.NoOfConfirmations;
+            foreach (var item in questions)
+            {
+                int positiveAnswers = pollResponseService.GetPositiveResponses(item.ID, poll.ID);
+
+                if (positiveAnswers >= NoOfNeededAnswers)
+                {
+                    pollService.AlertByMail(poll, item, pollCreator);
+                }
+            }
+
+            return View(poll);
+        }
+
+        public IActionResult AnswerDetails(int pollID)
+        {
+            var pollResponses = pollResponseService.GetResponsesByPoll(pollID);
+            ViewBag.PollID = pollID;
+            ViewBag.PollName = pollService.GetPollByID(pollID).Title;
+
+            IEnumerable<PollUser> pollUsers = pollUserService.GetPollUsersByPoll(pollID);
+            ViewBag.PollUsers = pollUsers;
+
+            IEnumerable<Question> questions = questionService.GetQuestionsByPollID(pollID);
+            ViewBag.Questions = questions;
+
+            IEnumerable<PollResponse> answers = pollResponseService.GetResponsesByPoll(pollID).OrderBy(q => q.QuestionID);
+            ViewBag.Answers = answers;
+
+
+            if (pollResponses == null)
+            {
+                return NotFound();
+            }
+
+            return View(pollResponses); 
+
+        }
     }
 }

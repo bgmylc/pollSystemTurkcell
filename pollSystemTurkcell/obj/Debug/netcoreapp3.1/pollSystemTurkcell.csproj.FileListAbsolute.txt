@@ -162,3 +162,14 @@ C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcel
 C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\obj\Debug\netcoreapp3.1\Razor\Views\PollReply\Reply.cshtml.g.cs
 C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\obj\Debug\netcoreapp3.1\Razor\Views\PollReply\ResponseDetails.cshtml.g.cs
 C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\obj\Debug\netcoreapp3.1\Razor\Views\PollReply\Details.cshtml.g.cs
+C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\bin\Debug\netcoreapp3.1\NPOI.OOXML.dll
+C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\bin\Debug\netcoreapp3.1\NPOI.OpenXml4Net.dll
+C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\bin\Debug\netcoreapp3.1\NPOI.OpenXmlFormats.dll
+C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\bin\Debug\netcoreapp3.1\NPOI.dll
+C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\bin\Debug\netcoreapp3.1\ICSharpCode.SharpZipLib.dll
+C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\obj\Debug\netcoreapp3.1\Razor\Views\PollReply\Alert.cshtml.g.cs
+C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\bin\Debug\netcoreapp3.1\IronPdf.dll
+C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\bin\Debug\netcoreapp3.1\IronPdf.Assets.Rendering.Universal.dll
+C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\obj\Debug\netcoreapp3.1\Razor\Views\Polls\DownloadList.cshtml.g.cs
+C:\Users\LENOVO\source\repos\turkcellGelecegiYazanlarNET\Proje\pollSystemTurkcell\pollSystemTurkcell\obj\Debug\netcoreapp3.1\Razor\Views\PollReply\AnswerDetails.cshtml.g.cs

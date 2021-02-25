@@ -37,6 +37,13 @@ namespace pollSystemTurkcell.Services
             return dbContext.PollUsers.AsNoTracking().ToList();
         }
 
+        public List<PollUser> GetPollUsersByPoll(int pollID)
+        {
+            return dbContext.PollUsers.Where(p => p.PollID == pollID)
+                                      .Include(u => u.User)
+                                      .AsNoTracking().ToList();
+        }
+
         public int NoOfPeopleAnswered(int pollID)
         {
             var answers = dbContext.PollUsers.Where(p => p.PollID == pollID);

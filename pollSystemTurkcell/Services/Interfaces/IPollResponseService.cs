@@ -13,5 +13,8 @@ namespace pollSystemTurkcell.Services.Interfaces
         PollResponse GetResponseDetailsByID(int pollResponseID);
         PollResponse GetResponseByQuestionUser(int userID, int quID);
         List<PollResponse> GetResponsesByUserPoll(int userID, int pollID);
+        List<PollResponse> GetResponsesByPoll(int pollID);
+        int GetPositiveResponses(int pollID, int quID);
+        void CreateList(Poll poll);
     }
 }

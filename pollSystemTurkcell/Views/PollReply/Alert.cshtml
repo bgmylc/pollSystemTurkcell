@@ -1,0 +1,11 @@
+﻿@model Poll
+@{
+    ViewData["Title"] = "Alert";
+}
+
+<h1>@Model.Title Anketi</h1>
+
+
+<div class="alert alert-warning" role="alert">
+    <strong>Tebrikler! </strong> Anketiniz kaydedildi. <a asp-action="Index" class="alert-link"> Anket listesine dönmek için tıkla </a>
+</div>

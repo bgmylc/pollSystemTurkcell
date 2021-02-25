@@ -9,6 +9,11 @@ namespace pollSystemTurkcell.Services.FakeServices
 {
     public class FakePollService : IPollService
     {
+        public void AlertByMail(Poll poll, Question question, User user)
+        {
+            throw new NotImplementedException();
+        }
+
         public void CreatePoll(Poll poll)
         {
             throw new NotImplementedException();

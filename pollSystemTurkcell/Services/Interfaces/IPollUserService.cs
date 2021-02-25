@@ -12,6 +12,6 @@ namespace pollSystemTurkcell.Services.Interfaces
         void AddPollUser(PollUser pollUser);
         bool DoesRowExist(int userID, int pollID);
         int NoOfPeopleAnswered(int pollID);
-        
+        List<PollUser> GetPollUsersByPoll(int pollID);
     }
 }

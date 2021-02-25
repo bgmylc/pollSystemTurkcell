@@ -66,11 +66,11 @@
         </dt>
         <dd class="col-sm-10">
             @ViewBag.NoOfAnswers
-            <a type="button" asp-action="AnswerDetails" asp-controller="Polls" asp-route-pollID="@Model.ID" class="btn btn-outline-info justify-content-center">Cevap Ayrıntılarını Gör</a>
+            <a type="button" asp-action="AnswerDetails" asp-controller="PollReply" asp-route-pollID="@Model.ID" class="btn btn-outline-info justify-content-center">Cevap Ayrıntılarını Gör</a>
         </dd>
     </dl>
 </div>
 <div>
-    <a type="button" class="btn btn-warning" asp-action="Edit"> Düzenle</a> |
+    <a type="button" class="btn btn-warning" asp-action="Edit" asp-route-pollID="@Model.ID"> Düzenle</a> |
     <a asp-action="Index">Listeye Dön</a>
 </div>

@@ -5,6 +5,7 @@ using pollSystemTurkcell.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace pollSystemTurkcell.Services
@@ -17,6 +18,34 @@ namespace pollSystemTurkcell.Services
         {
             this.dbContext = dbContext;
         }
+
+        public void AlertByMail(Poll poll, Question question, User user)
+        {
+
+            MailMessage ePosta = new MailMessage();
+            ePosta.From = new MailAddress("greencare465@gmail.com");
+            
+            ePosta.To.Add(user.Email);
+            ePosta.Subject = $"{poll.Title} Anketi Onayları";
+            ePosta.Body = $" Merhaba, {user.UserName}, {poll.Title} isimli anketinin, {question.Text} sorusu yeterli onay sayısına ulaştı!";
+            
+            SmtpClient smtp = new SmtpClient();
+            
+            smtp.Credentials = new System.Net.NetworkCredential("greencare465@gmail.com", "B78a51-0");
+            smtp.Port = 587;
+            smtp.Host = "smtp.gmail.com";
+            smtp.EnableSsl = true;
+            object userState = ePosta;
+            try
+            {
+                smtp.Send(ePosta);
+            }
+            catch (SmtpException)
+            {
+
+            }
+       
+    }
 
         public void CreatePoll(Poll poll)
         {
@@ -89,3 +118,4 @@ namespace pollSystemTurkcell.Services
         }
     }
 }
+

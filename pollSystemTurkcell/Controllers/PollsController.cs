@@ -9,6 +9,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
 using System.Threading;
+using System.IO;
+using NPOI.XWPF.UserModel;
 
 namespace pollSystemTurkcell.Controllers
 {
@@ -121,10 +123,14 @@ namespace pollSystemTurkcell.Controllers
             return View(poll);
         }
 
-        public IActionResult AnswerDetails(int pollID)
+       
+
+        public IActionResult DownloadList(string AnswerDetails, int pollID)
         {
-            return View(); //TODO 1: Cevap Detaylarını gir, eğer gereken sayı geçilmişse mail atılsın, bir de word olarak indirme yapacağız
-        
+           var poll = pollService.GetPollByID(pollID);
+           pollResponseService.CreateList(poll);
+
+            return View(poll); ;
         }
     }
 }

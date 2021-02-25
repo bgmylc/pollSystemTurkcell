@@ -34,6 +34,32 @@ namespace pollSystemTurkcell.Services
 
         }
 
+        public void CreateList(Poll poll)
+        {
+            var Renderer = new IronPdf.HtmlToPdf();
+            var PDF = Renderer.RenderUrlAsPdf("https://localhost:44303/PollReply/AnswerDetails?pollID=" + poll.ID.ToString());
+            var OutputPath = $"{poll.ID}_Liste.pdf";
+            PDF.SaveAs(OutputPath);
+        }
+
+        public int GetPositiveResponses(int pollID, int quID)
+        {
+            var responses = dbContext.PollResponses.Where(r => r.PollID == pollID && r.QuestionID == quID)
+                                                   .AsNoTracking().ToList();
+
+            int positiveResponses = 0;
+
+            foreach (var response in responses)
+            {
+                if (response.Answer == true)
+                {
+                    positiveResponses++;
+                }
+            }
+
+            return positiveResponses;
+        }
+
         public PollResponse GetResponseByQuestionUser(int userID, int quID)
         {
             return dbContext.PollResponses.FirstOrDefault(r => r.RespondentID == userID && r.QuestionID == quID);
@@ -46,6 +72,15 @@ namespace pollSystemTurkcell.Services
                                           .FirstOrDefault(r => r.ID == pollResponseID);
                                           
 
+        }
+
+        public List<PollResponse> GetResponsesByPoll(int pollID)
+        {
+            return dbContext.PollResponses.Include(p => p.Poll)
+                                          .Include(q => q.Question)
+                                          .Include(u => u.Respondent)
+                                          .Where(r => r.PollID == pollID)
+                                          .AsNoTracking().ToList();
         }
 
         public List<PollResponse> GetResponsesByUserPoll(int userID, int pollID)

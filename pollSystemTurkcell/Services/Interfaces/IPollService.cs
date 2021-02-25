@@ -16,6 +16,7 @@ namespace pollSystemTurkcell.Services.Interfaces
         List<Poll> GetCurrentPolls();
         List<Poll> GetOldPolls();
         bool PollResponsesComplete(int userID, Poll poll);
+        void AlertByMail(Poll poll, Question question, User user);
        
     }
 }
