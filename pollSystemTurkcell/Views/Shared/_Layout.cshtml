@@ -26,32 +26,33 @@
                                 @if (User.IsInRole("Admin"))
                                 {
 
-                                    <div class="dropdown">
-                                        <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown">
-                                            Hoşgeldin @User.Identity.Name, bugün neler var?
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Çıkış Yap</a></li>
-                                            <div class="dropdown-divider"></div>
-                                            <li><a class="dropdown-item" asp-controller="Polls" asp-action="Index">Anket İşlemleri</a></li>
-                                        </ul>
-                                    </div>
+                            <div class="dropdown">
+                                <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown">
+                                    Hoşgeldin @User.Identity.Name, bugün neler var?
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a ha class="dropdown-item" asp-controller="Account" asp-action="Logout">Çıkış Yap</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" asp-controller="Polls" asp-action="Index">Anket İşlemleri</a></li>
+                                </ul>                          
+                            </div>
                                 }
                                 else if (User.IsInRole("User"))
                                 {
-                                    <div class="dropdown">
-                                        <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown">
-                                            Merhaba @User.Identity.Name, hadi kitap okuyalım :)
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Çıkış Yap</a></li>
-                                            <div class="dropdown-divider"></div>
-                                            <li><a class="dropdown-item" asp-controller="PollReply" asp-action="Index">Güncel Anketler</a></li>
-                                            <li><a class="dropdown-item" asp-controller="PollReply" asp-action="OldIndex">Geçmiş Anketler</a></li>
-                                        </ul>
-                                    </div>
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown">
+                                Merhaba @User.Identity.Name, hadi kitap okuyalım :)
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a ha class="dropdown-item" asp-controller="Account" asp-action="Logout">Çıkış Yap</a></li>
+                                <li class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" asp-controller="PollReply" asp-action="Index">Güncel Anketler</a></li>
+                                <li><a class="dropdown-item" asp-controller="PollReply" asp-action="OldIndex">Geçmiş Anketler</a></li>
+                            </ul>
+                         
+                        </div>
                                 }
 
                             }
