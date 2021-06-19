@@ -1,0 +1,60 @@
+﻿@model IEnumerable<pollSystemTurkcell.Models.Poll>
+
+@{
+    ViewData["Title"] = "OldIndex";
+}
+
+<h1>Geçmiş Anketler</h1>
+
+<div>
+    <a asp-action="Index">Güncel Anket Listesine Git</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Deadline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Creator)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Deadline)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Creator.Name)
+                </td>
+                <td>
+                    <a type="button" asp-action="Details" asp-controller="PollReply" asp-route-pollID="@item.ID" class="btn btn-warning" method="post">Detaylar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
